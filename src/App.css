@@ -36,3 +36,45 @@
     transform: rotate(360deg);
   }
 }
+
+.hand{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 130px;
+}
+.lhand{
+  width: 170px;
+  transform: rotate(90deg);
+}
+.rhand{
+  width: 170px;
+  transform: rotate(-90deg);
+}
+.symbol{
+  border: 1px solid black;
+  width: 100px;
+  height: 100px;
+  margin: 22px;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.symbol:hover{
+  transform: scale(1.2);
+}
+.symbol-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.points{
+  width: 500px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.symbol-btn{
+  border: none;
+}
