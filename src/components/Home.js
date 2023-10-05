@@ -17,78 +17,40 @@ function Home() {
     let [compValue, setCompValue] = useState('')
     let [playerValue, setPlayerValue] = useState('')
     const [userHand, setUserHand] = useState(hand)
-    let [compHand, setCompHand] = useState(hand)
     
     function rockHandler() {
         setCompValue(values[randomNum])
-        assign()
         setPlayerValue('Rock')
-        check()
+        setUserHand(Rock)
     }
     function paperHandler() {
         setCompValue(values[randomNum])
         setPlayerValue('Paper')
-        assign()
-        check()
+        setUserHand(Paper)
     }
     function scissorsHandler() {
         setCompValue(values[randomNum])
         setPlayerValue('Scissors')
-        assign()
-        check()
-    }
-
-    function assign() {
-        if (compValue === 'Rock')
-            setCompHand(Rock)
-        else if (compValue === 'Paper')
-            setCompHand(Paper)
-        else if (compValue === 'Scissors')
-            setCompHand(Scissors)
-        else
-            setCompHand(Rock)
-            if (playerValue === 'Rock')
-            setUserHand(Rock)
-        else if (playerValue === 'Paper')
-            setUserHand(Paper)
-        else if (playerValue === 'Scissors')
-            setUserHand(Scissors)
-        else
-            setUserHand(Rock)
-    }
-
-    function check() {
-        if (playerValue === 'Rock' && compValue === 'Scissors')
-            setPlayerPoint(playerPoint + 1)
-        else if (playerValue === 'Paper' && compValue === 'Rock')
-            setPlayerPoint(playerPoint + 1)
-        else if (playerValue === 'Scissors' && compValue === 'Paper')
-            setPlayerPoint(playerPoint + 1)
-        else if (playerValue === compValue) {
-            setPlayerPoint(playerPoint)
-            setCompPoint(compPoint)
-        }
-        else
-            setCompPoint(compPoint + 1)
+        setUserHand(Scissors)
     }
     
     return (
         <div>
             <h3>RPS game</h3>
             <div className='points'>
-                <h2>Player point: {playerPoint} </h2>
-                <h2>Computer point: {compPoint} </h2>
+                <h2>Player point: {playerValue === 'Rock' && compValue === 'Scissors' || playerValue === 'Paper' && compValue === 'Rock' || playerValue === 'Scissors' && compValue === 'Paper'?playerPoint+1:playerPoint} </h2>
+                <h2>Player point: {compValue === 'Rock' && playerValue === 'Scissors' || compValue === 'Paper' && playerValue === 'Rock' || compValue === 'Scissors' && playerValue === 'Paper'?compPoint+1:compPoint} </h2>
             </div>
             <div className='hand'>
                 <div>
                     <h3>User</h3>
-                    {/* <p>{playerValue}</p> */}
+                    <p>{playerValue}</p>
                     <img src={userHand} className='lhand' alt='userHand' />
                 </div>
                 <div>
                     <h3>Computer</h3>
-                    {/* <p>{compValue}</p> */}
-                    <img src={compHand} className='rhand' alt='compHand' />
+                    <p>{compValue}</p>
+                    <img src={compValue === 'Rock'?Rock:compValue === 'Paper'?Paper:compValue==='Scissors'?Scissors:hand} className='rhand' alt='compHand' />
                 </div>
             </div>
             <br />
